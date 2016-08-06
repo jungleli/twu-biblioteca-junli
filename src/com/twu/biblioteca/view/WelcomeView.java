@@ -5,7 +5,7 @@ import com.twu.biblioteca.helper.Helper;
 /**
  * Created by jlli on 8/6/16.
  */
-public class Welcome {
+public class WelcomeView {
     private static final String WELCOME = "Weclome to the Virtual Library!";
 
     public static void getWELCOME() {

@@ -1,7 +1,6 @@
 package com.twu.biblioteca.controller;
 
 import com.twu.biblioteca.helper.Helper;
-import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Library;
 
 import java.util.List;
@@ -11,15 +10,13 @@ import java.util.stream.Collectors;
  * Created by jlli on 8/6/16.
  */
 public class LibraryController {
-
-
     private static Library lib;
 
     public Library getLibrary()
     {
         if(lib ==null) {
             lib = new Library();
-            lib.setBooks(Helper.initializeData());
+            lib.setBooks(Helper.initializeBooks());
         }
         return lib;
     }
