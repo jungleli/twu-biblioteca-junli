@@ -22,11 +22,12 @@ public class MenuView {
 
     public void dispatchMenu(int menuItem)
     {
+        LoginView loginView = new LoginView();
         switch (menuItem)
         {
             case 0:
                 try {
-                    new LoginView().login();
+                    loginView.login();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -41,6 +42,9 @@ public class MenuView {
                 new CheckBookView().checkInBookByID();
                 break;
             case 4:
+                loginView.logout();
+                break;
+            case 5:
                 Helper.printMsg("Quit success! Bye");
                 break;
             default:

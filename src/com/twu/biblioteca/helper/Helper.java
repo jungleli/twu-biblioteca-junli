@@ -46,7 +46,8 @@ public class Helper {
                 new Menu(1, "List Books"),
                 new Menu(2, "Check out books"),
                 new Menu(3, "Check in books"),
-                new Menu(4, "Quit")
+                new Menu(4, "Logout"),
+                new Menu(5, "Quit")
         );
     }
 

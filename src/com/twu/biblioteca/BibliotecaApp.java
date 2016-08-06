@@ -17,7 +17,7 @@ public class BibliotecaApp {
 
         Helper.printMsg("=====Please input a valid menu index:======");
         try {
-            while (getInputMenuItem(menuView) != 4) {
+            while (getInputMenuItem(menuView) != 5) {
                 getInputMenuItem(menuView);
             }
         } catch (IOException exception) {

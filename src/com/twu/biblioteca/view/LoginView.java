@@ -25,4 +25,13 @@ public class LoginView {
                 Helper.printMsg("Wrong username or password, please enter again");
         }
     }
+
+    public void logout() {
+        if(user.findLoginUser()) {
+            user.getLoginUser().setStatus("LOGOUT");
+            Helper.printMsg("Logout success. Thanks for using.");
+        }else{
+            Helper.printMsg("No User is Login. Please enter your option.");
+        }
+    }
 }

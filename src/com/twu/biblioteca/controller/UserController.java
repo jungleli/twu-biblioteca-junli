@@ -21,10 +21,10 @@ public class UserController {
     public boolean isLogin(String username){
         return getAllUsers().stream().anyMatch(i -> i.getName().equals(username) && i.getStatus() == "LOGIN");
     }
-//
-//    public User findLoginUser(String status) {
-//        return getAllUsers().stream().filter(u -> u.getStatus().equals(status)).findFirst().orElse(null);
-//    }
+
+    public User getLoginUser() {
+        return getAllUsers().stream().filter(u -> u.getStatus().equals("LOGIN")).findFirst().orElse(null);
+    }
 
     public boolean findLoginUser() {
         return getAllUsers().stream().anyMatch(u -> u.getStatus() == "LOGIN");
