@@ -27,6 +27,8 @@ public class BibliotecaApp {
     private static int getInputMenuItem(MenuView menuView) throws IOException {
         int menuItem = Helper.getInputInt(System.in);
         menuView.dispatchMenu(menuItem);
+        Helper.printMsg("=====Please input a valid menu index:======");
+        menuView.printAllMenu();
         return menuItem;
     }
 }

@@ -10,20 +10,39 @@ import java.util.stream.Collectors;
  * Created by jlli on 8/6/16.
  */
 public class UserController {
+    private static List<User> users;
     public List<User> getAllUsers() {
-        return Helper.intializeUsers();
+        if(users == null) {
+            users = Helper.intializeUsers();
+        }
+        return users;
     }
 
-//    public boolean authenticate(String username, String password) {
-//        return this.username.equals(username) && this.username.equals(password);
+    public boolean isLogin(String username){
+        return getAllUsers().stream().anyMatch(i -> i.getName().equals(username) && i.getStatus() == "LOGIN");
+    }
+//
+//    public User findLoginUser(String status) {
+//        return getAllUsers().stream().filter(u -> u.getStatus().equals(status)).findFirst().orElse(null);
 //    }
-//    public boolean isLogin(String username){
-//        return getAllUsers().stream().anyMatch(i -> i.getName() == username && i.getStatus() == 1);
-//    }
+
+    public boolean findLoginUser() {
+        return getAllUsers().stream().anyMatch(u -> u.getStatus() == "LOGIN");
+    }
+
+    public User findUserByName(String username) {
+        return getAllUsers().stream().filter(u -> u.getName().equals(username)).findFirst().orElse(null);
+    }
 
     public boolean Login(String username, String password) {
-        Helper.printMsg(username + password);
-
-        return getAllUsers().stream().anyMatch(i -> i.getName() == username && i.getPassword() == password);
+        if (!findLoginUser()) {
+            boolean auth = getAllUsers().stream().anyMatch(i -> i.getName().equals(username) && i.getPassword().equals(password));
+            if (auth) {
+                findUserByName(username).setStatus("LOGIN");
+                Helper.printMsg(findUserByName(username).getStatus()+ findUserByName(username).getName());
+                return true;
+            }
+        }
+        return false;
     }
 }

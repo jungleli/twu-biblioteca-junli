@@ -12,7 +12,7 @@ public class ListBooksView {
 
     public void printBooklist() {
         Helper.printMsg(String.format("%-10s%-20s%-20s%-10s", "BOOK ID", "BOOK NAME", "AUTHOR", "STATUS"));
-        libDispatcher.listAllBooks().forEach(
+        libDispatcher.listAllAvailableBooks().forEach(
                 r -> Helper.printMsg(r));
     }
 }

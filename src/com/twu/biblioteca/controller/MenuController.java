@@ -11,10 +11,13 @@ import java.util.stream.Collectors;
  * Created by jlli on 8/6/16.
  */
 public class MenuController {
-
+    private List<Menu> menus;
     public List<Menu> getAllMenu()
     {
-       return Helper.intializeMenus();
+       if(menus == null){
+           menus = Helper.intializeMenus();
+       }
+        return menus;
     }
 
     public List<String> listAllMenu(){

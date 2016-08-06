@@ -35,10 +35,10 @@ public class MenuView {
                 new ListBooksView().printBooklist();
                 break;
             case 2:
-                System.out.println("Check out book");
+                new CheckBookView().checkOutBookByID();
                 break;
             case 3:
-                System.out.println("Get off the road2");
+                new CheckBookView().checkInBookByID();
                 break;
             case 4:
                 Helper.printMsg("Quit success! Bye");

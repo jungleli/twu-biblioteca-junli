@@ -52,9 +52,9 @@ public class Helper {
 
     public static List<User> intializeUsers() {
         return Arrays.asList(
-                new User(1, "Lisa", "123456"),
-                new User(2, "Tom", "123456"),
-                new User(3, "Bob", "123456")
+                new User(1, "Lisa", "123456", "LOGOUT"),
+                new User(2, "Tom", "123456", "LOGOUT"),
+                new User(3, "Bob", "123456", "LOGOUT")
         );
     }
 }
