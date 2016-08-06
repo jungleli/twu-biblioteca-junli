@@ -1,17 +1,12 @@
 package com.twu.biblioteca.view;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.twu.biblioteca.controller.LibraryController;
 import com.twu.biblioteca.helper.Helper;
-import com.twu.biblioteca.model.Book;
-import com.twu.biblioteca.model.Library;
 
 /**
  * Created by jlli on 8/6/16.
  */
-public class ListBooks {
+public class ListBooksView {
 
     LibraryController libDispatcher = new LibraryController();
 

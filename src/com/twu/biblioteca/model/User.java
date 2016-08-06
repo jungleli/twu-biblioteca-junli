@@ -8,10 +8,17 @@ import java.util.List;
 public class User {
     private int ID;
     private String Name;
+    private String Password;
     private List<Book> BookList;
 
     public int getID() {
         return ID;
+    }
+
+    public User(int ID, String name, String password) {
+        this.ID = ID;
+        Name = name;
+        Password = password;
     }
 
     public void setID(int ID) {
@@ -20,6 +27,14 @@ public class User {
 
     public String getName() {
         return Name;
+    }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String password) {
+        Password = password;
     }
 
     public void setName(String name) {
