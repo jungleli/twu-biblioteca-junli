@@ -15,20 +15,23 @@ public class BibliotecaApp {
         MenuView menuView = new MenuView();
         menuView.printAllMenu();
 
-        Helper.printMsg("=====Please input a valid menu index:======");
         try {
-            while (getInputMenuItem(menuView) != 7) {
-                getInputMenuItem(menuView);
+            int menuItem = getInputMenuItem();
+            while (menuItem != 7) {
+                dispatchInputMenuItem(menuView, menuItem);
+                menuItem = getInputMenuItem();
             }
         } catch (IOException exception) {
         }
     }
 
-    private static int getInputMenuItem(MenuView menuView) throws IOException {
-        int menuItem = Helper.getInputInt(System.in);
+    private static void dispatchInputMenuItem(MenuView menuView, int menuItem) throws IOException {
         menuView.dispatchMenu(menuItem);
-        Helper.printMsg("=====Please input a valid menu index:======");
         menuView.printAllMenu();
-        return menuItem;
+    }
+
+    private static int getInputMenuItem() throws IOException {
+        Helper.printMsg("=====Please input a valid menu index:======");
+        return Helper.getInputInt(System.in);
     }
 }
