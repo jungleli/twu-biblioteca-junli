@@ -4,7 +4,9 @@ import com.twu.biblioteca.helper.Helper;
 import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Library;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,10 +26,20 @@ public class LibraryController {
         return lib;
     }
 
-    public List<String> listAllAvailableBooks() {
-        return getLibrary().getBooks().stream().filter(b -> b.getStatus() == 1)
-                .map(r -> String.format("%-10d%-20s%-20s%-10d", r.getID(), r.getName(), r.getAuthor(), r.getStatus()))
-                .collect(Collectors.toList());
+
+    private static String getFormatDate(Date date) {
+        return new SimpleDateFormat("dd/MM/yyyy").format(date);
+    }
+
+
+    public List<String> listAllAvailableBooks(List<Book> books) {
+        return formatBookList(books.stream().filter(b -> b.getStatus() == 1).collect(Collectors.toList()));
+    }
+
+    public static List<String> formatBookList(List<Book> books) {
+        return books.stream()
+                    .map(r -> String.format("%-10d%-20s%-20s%-10s", r.getID(), r.getName(), r.getAuthor(), getFormatDate(r.getPublishTime())))
+                    .collect(Collectors.toList());
     }
 
     public List<Book> getAllBooks() {

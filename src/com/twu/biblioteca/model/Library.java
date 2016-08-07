@@ -8,6 +8,13 @@ import java.util.List;
 public class Library {
     private List<Book> Books;
 
+    public Library() {
+    }
+
+    public Library(List<Book> books) {
+        Books = books;
+    }
+
     public List<Book> getBooks() {
         return Books;
     }

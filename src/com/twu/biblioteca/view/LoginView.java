@@ -6,7 +6,8 @@ import com.twu.biblioteca.model.Book;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static com.twu.biblioteca.controller.LibraryController.formatBookList;
 
 /**
  * Created by jlli on 8/6/16.
@@ -43,10 +44,9 @@ public class LoginView {
             List<Book> userBookList = user.getUserBooks();
             if (userBookList != null && userBookList.size() > 0) {
                 Helper.printMsg(String.format("%-10s%-20s%-20s%-10s", "BOOK ID", "BOOK NAME", "AUTHOR", "STATUS"));
-                userBookList.stream()
-                        .map(b -> String.format("%-10d%-20s%-20s%-10d", b.getID(), b.getName(), b.getAuthor(), b.getStatus())).collect(Collectors.toList())
-                        .forEach(r -> Helper.printMsg(r));
-            } else {
+                formatBookList(userBookList).forEach(
+                        r -> Helper.printMsg(r));
+               } else {
                 Helper.printMsg("You have not borrow any books.");
             }
         } else {
