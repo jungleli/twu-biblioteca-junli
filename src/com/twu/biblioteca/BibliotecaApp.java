@@ -17,7 +17,7 @@ public class BibliotecaApp {
 
         try {
             int menuItem = getInputMenuItem();
-            while (menuItem != 7) {
+            while (menuItem != 0) {
                 dispatchInputMenuItem(menuView, menuItem);
                 menuItem = getInputMenuItem();
             }

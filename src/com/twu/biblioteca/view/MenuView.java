@@ -22,28 +22,37 @@ public class MenuView {
         switch (menuItem)
         {
             case 1:
-                new ListBooksView().printBooklist();
+                new ListLibraryItemView().printBooklist();
                 break;
             case 2:
-                new CheckBookView().checkOutBookByID();
+                new ListLibraryItemView().printMovielist();
                 break;
             case 3:
-                new CheckBookView().checkInBookByID();
+                new CheckLibraryItemView().checkOutBookByID();
                 break;
             case 4:
+                new CheckLibraryItemView().checkOutMoiveByID();
+                break;
+            case 5:
+                new CheckLibraryItemView().checkInBookByID();
+                break;
+            case 6:
+                new CheckLibraryItemView().checkInMovieByID();
+                break;
+            case 7:
                 try {
                     loginView.login();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
                 break;
-            case 5:
-                loginView.showUserCheckedBooks();
+            case 8:
+                loginView.showUserInfo();
                 break;
-            case 6:
+            case 9:
                 loginView.logout();
                 break;
-            case 7:
+            case 0:
                 Helper.printMsg("Quit success! Bye");
                 break;
             default:

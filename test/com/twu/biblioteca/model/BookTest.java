@@ -15,7 +15,7 @@ public class BookTest {
 
     @Before
     public void BuilderBook() {
-        book = new Book(0, "Java First", new Date(2222), "Jake", 1);
+        book = new Book(0, "Java First", new Date(2222), "Jake", "AVAILABLE");
     }
 
     @Test
@@ -23,7 +23,7 @@ public class BookTest {
         assertEquals(0, book.getID());
         assertEquals("Java First", book.getName());
         assertEquals(new Date(2222), book.getPublishTime());
-        assertEquals(1, book.getStatus());
+        assertEquals("AVAILABLE", book.getStatus());
     }
 
 }

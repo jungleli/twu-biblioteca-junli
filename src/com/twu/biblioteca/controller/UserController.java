@@ -2,6 +2,7 @@ package com.twu.biblioteca.controller;
 
 import com.twu.biblioteca.helper.Helper;
 import com.twu.biblioteca.model.Book;
+import com.twu.biblioteca.model.Movie;
 import com.twu.biblioteca.model.User;
 
 import java.util.ArrayList;
@@ -39,9 +40,21 @@ public class UserController {
         }else return new ArrayList<>();
     }
 
+    public List<Movie> getUserMovies() {
+        if(findLoginUser()){
+            return getLoginUser().getMovieList();
+        }else return new ArrayList<>();
+    }
+
     public void setUsersBooks(List<Book> bookList){
         if(findLoginUser()) {
             getLoginUser().setBookList(bookList);
+        }
+    }
+
+    public void setUsersMovies(List<Movie> movieList){
+        if(findLoginUser()) {
+            getLoginUser().setMovieList(movieList);
         }
     }
 

@@ -31,7 +31,7 @@ public class MenuViewTest {
 
     @Test
     public void ShouldBeShowMenuItems(){
-        menuItems = "1 : List Books || 2 : Check out books || 3 : Check in books || 4 : Login || 5 : User Checked List || 6 : Logout || 7 : Quit\n";
+        menuItems = "1 : List Books || 2 : List Movies || 3 : Check out books || 4 : Check out movies || 5 : Check in books || 6 : Check in movis || 7 : Login || 8 : User Info || 9 : Logout || 0 : Quit\n";
         MenuView menuView = new MenuView();
         menuView.printAllMenu();
         Assert.assertEquals(menuItems.trim(), outContent.toString().trim());
@@ -39,7 +39,7 @@ public class MenuViewTest {
 
     @Test
     public void ShouldBeAbleToDispatchMenu(){
-        menuItem = 7;
+        menuItem = 0;
         tipMsg = "Quit success! Bye\n";
         MenuView menuView = new MenuView();
         menuView.dispatchMenu(menuItem);

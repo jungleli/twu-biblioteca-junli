@@ -54,8 +54,13 @@ public class HelperTest {
     }
 
     @Test
-    public void ShouldReturnLibraryByInit(){
+    public void ShouldReturnLibraryBooksByInit(){
         assertEquals(true, Helper.initializeBooks().size() > 0);
+    }
+
+    @Test
+    public void ShouldReturnLibraryMoviesByInit(){
+        assertEquals(true, Helper.initializeMovies().size() > 0);
     }
 
     @Test
