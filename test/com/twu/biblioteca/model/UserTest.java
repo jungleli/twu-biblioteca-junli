@@ -1,8 +1,7 @@
 package com.twu.biblioteca.model;
 
+import org.junit.Before;
 import org.junit.Test;
-
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -12,9 +11,13 @@ import static org.junit.Assert.assertEquals;
 public class UserTest {
     private User user;
 
+    @Before
+    public void BuildeUser() {
+        user = new User(0, "Lisa", "123456", "LOGOUT", null);
+    }
+
     @Test
     public void ShouldReturnUserByGiveUser() {
-        user = new User(0, "Lisa", "123456", "LOGOUT", null);
         assertEquals(0, user.getID());
         assertEquals("Lisa", user.getName());
         assertEquals("123456", user.getPassword());

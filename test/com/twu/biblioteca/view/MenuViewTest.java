@@ -1,6 +1,5 @@
 package com.twu.biblioteca.view;
 
-import com.twu.biblioteca.helper.Helper;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -9,8 +8,6 @@ import org.junit.Test;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-
-import static org.junit.Assert.assertEquals;
 
 /**
  * Created by jlli on 8/7/16.

@@ -1,5 +1,6 @@
 package com.twu.biblioteca.model;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -10,9 +11,13 @@ import static org.junit.Assert.assertEquals;
 public class MenuTest {
     private Menu menu;
 
+    @Before
+    public void BuildMenu() {
+        menu = new Menu(0, "Login");
+    }
+
     @Test
     public void ShouldReturnMenuByGiveMenu() {
-        menu = new Menu(0, "Login");
         assertEquals(0, menu.getID());
         assertEquals("Login", menu.getName());
     }

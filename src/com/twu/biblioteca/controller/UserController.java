@@ -59,4 +59,13 @@ public class UserController {
         }
         return false;
     }
+
+    public boolean Logout(){
+        if(findLoginUser()){
+            getLoginUser().setStatus("LOGOUT");
+            return true;
+        }
+        return false;
+    }
+
 }

@@ -16,10 +16,6 @@ public class MenuView {
         Helper.printMsg(menuDispatch.showMenu());
     }
 
-//    public void dispatchMenu(int menuItem) {
-//        menuDispatch.dispatchMenu(menuItem);
-//    }
-
     public void dispatchMenu(int menuItem)
     {
         LoginView loginView = new LoginView();

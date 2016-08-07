@@ -31,8 +31,7 @@ public class LoginView {
     }
 
     public void logout() {
-        if (user.findLoginUser()) {
-            user.getLoginUser().setStatus("LOGOUT");
+        if (user.Logout()) {
             Helper.printMsg("Logout success. Thanks for using.");
         } else {
             Helper.printMsg("No User is Login. Please enter your option.");
