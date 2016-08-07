@@ -7,7 +7,7 @@ import com.twu.biblioteca.helper.Helper;
 /**
  * Created by jlli on 8/6/16.
  */
-public class CheckBookView {
+public class CheckLibraryItemView {
     LibraryController libraryController = new LibraryController();
     boolean isHasUserLogin = new UserController().findLoginUser();
 
@@ -25,6 +25,20 @@ public class CheckBookView {
         }
     }
 
+    public void checkOutMoiveByID() {
+        if (isHasUserLogin) {
+            Helper.printMsg("Please enter the movieID to checkOut");
+            int movieID = Helper.getInputInt(System.in);
+            if (libraryController.checkOutMovie(movieID)) {
+                Helper.printMsg("Thank you! Enjoy the movie");
+            } else {
+                Helper.printMsg("That movie is not available. Which do you want next:");
+            }
+        }else{
+            Helper.printMsg("You are not Login, Please Login first.");
+        }
+    }
+
     public void checkInBookByID() {
         if (isHasUserLogin) {
             Helper.printMsg("Please enter the bookID to checkIn");
@@ -32,6 +46,18 @@ public class CheckBookView {
             if (libraryController.checkInBook(bookID)) {
                 Helper.printMsg("Thank you for returning the book.");
             } else Helper.printMsg("That is not a valid book to return.");
+        } else {
+            Helper.printMsg("You are not Login, Please Login first.");
+        }
+    }
+
+    public void checkInMovieByID() {
+        if (isHasUserLogin) {
+            Helper.printMsg("Please enter the bookID to checkIn");
+            int movieID = Helper.getInputInt(System.in);
+            if (libraryController.checkInMovie(movieID)) {
+                Helper.printMsg("Thank you for returning the movie.");
+            } else Helper.printMsg("That is not a valid movie to return.");
         } else {
             Helper.printMsg("You are not Login, Please Login first.");
         }
