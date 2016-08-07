@@ -23,6 +23,14 @@ public class User {
         Status = status;
     }
 
+    public User(int ID, String name, String password, String status, List<Book> bookList) {
+        this.ID = ID;
+        Name = name;
+        Password = password;
+        Status = status;
+        BookList = bookList;
+    }
+
     public void setID(int ID) {
         this.ID = ID;
     }

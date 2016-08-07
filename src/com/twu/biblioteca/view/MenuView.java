@@ -25,13 +25,6 @@ public class MenuView {
         LoginView loginView = new LoginView();
         switch (menuItem)
         {
-            case 0:
-                try {
-                    loginView.login();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                break;
             case 1:
                 new ListBooksView().printBooklist();
                 break;
@@ -42,9 +35,19 @@ public class MenuView {
                 new CheckBookView().checkInBookByID();
                 break;
             case 4:
-                loginView.logout();
+                try {
+                    loginView.login();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 break;
             case 5:
+                loginView.showUserCheckedBooks();
+                break;
+            case 6:
+                loginView.logout();
+                break;
+            case 7:
                 Helper.printMsg("Quit success! Bye");
                 break;
             default:

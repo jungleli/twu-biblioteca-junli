@@ -42,20 +42,22 @@ public class Helper {
 
     public static List<Menu> intializeMenus() {
         return Arrays.asList(
-                new Menu(0, "Login"),
                 new Menu(1, "List Books"),
                 new Menu(2, "Check out books"),
                 new Menu(3, "Check in books"),
-                new Menu(4, "Logout"),
-                new Menu(5, "Quit")
+                new Menu(4, "Login"),
+                new Menu(5, "User Checked List"),
+                new Menu(6, "Logout"),
+                new Menu(7, "Quit")
         );
     }
 
     public static List<User> intializeUsers() {
         return Arrays.asList(
-                new User(1, "Lisa", "123456", "LOGOUT"),
-                new User(2, "Tom", "123456", "LOGOUT"),
-                new User(3, "Bob", "123456", "LOGOUT")
+                new User(1, "Lisa", "123456", "LOGOUT", null),
+                new User(2, "Tom", "123456", "LOGOUT", null),
+                new User(3, "Bob", "123456", "LOGOUT", null),
+                new User(4, "1", "1", "LOGOUT", null)
         );
     }
 }

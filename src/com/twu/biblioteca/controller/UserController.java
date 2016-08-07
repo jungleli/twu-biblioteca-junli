@@ -1,8 +1,11 @@
 package com.twu.biblioteca.controller;
 
 import com.twu.biblioteca.helper.Helper;
+import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.User;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,6 +33,18 @@ public class UserController {
         return getAllUsers().stream().anyMatch(u -> u.getStatus() == "LOGIN");
     }
 
+    public List<Book> getUserBooks(){
+        if(findLoginUser()){
+            return getLoginUser().getBookList();
+        }else return new ArrayList<>();
+    }
+
+    public void setUsersBooks(List<Book> bookList){
+        if(findLoginUser()) {
+            getLoginUser().setBookList(bookList);
+        }
+    }
+
     public User findUserByName(String username) {
         return getAllUsers().stream().filter(u -> u.getName().equals(username)).findFirst().orElse(null);
     }
@@ -39,7 +54,6 @@ public class UserController {
             boolean auth = getAllUsers().stream().anyMatch(i -> i.getName().equals(username) && i.getPassword().equals(password));
             if (auth) {
                 findUserByName(username).setStatus("LOGIN");
-                Helper.printMsg(findUserByName(username).getStatus()+ findUserByName(username).getName());
                 return true;
             }
         }
