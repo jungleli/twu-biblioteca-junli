@@ -10,9 +10,9 @@ public class Book {
     private String Name;
     private Date PublishTime;
     private String Author;
-    private int status;
+    private String status;
 
-    public Book(int ID, String name, Date publishTime, String author, int status) {
+    public Book(int ID, String name, Date publishTime, String author, String status) {
         this.ID = ID;
         Name = name;
         PublishTime = publishTime;
@@ -52,11 +52,11 @@ public class Book {
         Author = author;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 }

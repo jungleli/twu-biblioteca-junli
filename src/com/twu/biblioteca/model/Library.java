@@ -7,6 +7,7 @@ import java.util.List;
  */
 public class Library {
     private List<Book> Books;
+    private List<Movie> Movies;
 
     public Library() {
     }
@@ -15,12 +16,25 @@ public class Library {
         Books = books;
     }
 
+    public Library(List<Book> books, List<Movie> movies) {
+        Books = books;
+        Movies = movies;
+    }
+
     public List<Book> getBooks() {
         return Books;
     }
 
     public void setBooks(List<Book> books) {
         Books = books;
+    }
+
+    public List<Movie> getMovies() {
+        return Movies;
+    }
+
+    public void setMovies(List<Movie> movies) {
+        Movies = movies;
     }
 }
 
