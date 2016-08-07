@@ -11,7 +11,7 @@ public class ListBooksView {
     LibraryController libDispatcher = new LibraryController();
 
     public void printBooklist() {
-        Helper.printMsg(String.format("%-10s%-20s%-20s%-10s", "BOOK ID", "BOOK NAME", "AUTHOR", "STATUS"));
+        Helper.printMsg(String.format("%-10s%-20s%-15s%-20s%-20s", "BOOK ID", "BOOK NAME", "AUTHOR", "PUBLISH DATE", "STATUS"));
         libDispatcher.listAllAvailableBooks(libDispatcher.getLibrary().getBooks()).forEach(
                 r -> Helper.printMsg(r));
     }

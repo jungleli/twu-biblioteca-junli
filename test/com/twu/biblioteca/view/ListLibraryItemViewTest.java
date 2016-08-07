@@ -11,7 +11,7 @@ import java.io.PrintStream;
 /**
  * Created by jlli on 8/7/16.
  */
-public class ListBooksViewTest {
+public class ListLibraryItemViewTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @Before
@@ -26,8 +26,15 @@ public class ListBooksViewTest {
 
     @Test
     public void ShouldBeAbleShowBookList() {
-        ListBooksView listBooksView = new ListBooksView();
+        ListLibraryItemView listBooksView = new ListLibraryItemView();
         listBooksView.printBooklist();
-        Assert.assertEquals(true, outContent.toString().contains("Java Plus"));
+        Assert.assertTrue(outContent.toString().contains("C Plus".trim()));
+    }
+
+    @Test
+    public void ShouldBeAbleShowMovieList() {
+        ListLibraryItemView listMoviesView = new ListLibraryItemView();
+        listMoviesView.printMovielist();
+        Assert.assertTrue(outContent.toString().contains("Lost"));
     }
 }
