@@ -7,12 +7,9 @@ import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Movie;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static com.twu.biblioteca.view.LoginView.user;
 
 /**
  * Created by jlli on 8/6/16.
@@ -49,52 +46,11 @@ public class LibraryController {
                     .collect(Collectors.toList());
     }
 
-    private void addToUserBookList(Book book) {
-        List<Book> userBookList = user.getUserBooks();
-        if (userBookList == null) {
-            userBookList = new ArrayList();
-            userBookList.add(book);
-            user.setUsersBooks(userBookList);
-        } else {
-            userBookList.add(book);
-            user.setUsersBooks(userBookList);
-        }
-    }
-
-    private void removeFromUserBookList(Book book) {
-        List<Book> userBookList = user.getUserBooks();
-        if (userBookList != null) {
-            userBookList.remove(book);
-            user.setUsersBooks(userBookList);
-        }
-    }
-
-    private void addToUserMovieList(Movie movie) {
-        List<Movie> userMovieList = user.getUserMovies();
-        if (userMovieList == null) {
-            userMovieList = new ArrayList();
-            userMovieList.add(movie);
-            user.setUsersMovies(userMovieList);
-        } else {
-            userMovieList.add(movie);
-            user.setUsersMovies(userMovieList);
-        }
-    }
-
-    private void removeFromUserMovieList(Movie movie) {
-        List<Book> userBookList = user.getUserBooks();
-        if (userBookList != null) {
-            userBookList.remove(movie);
-            user.setUsersBooks(userBookList);
-        }
-    }
-
     public boolean checkOutBook(int bookID) {
         if (bookDao.isValidBookID(bookID)) {
             Book book = bookDao.findBookByID(bookID);
             if (book != null && bookDao.isAvailable(book)) {
                 bookDao.setToOnLoad(book);
-//                addToUserBookList(book);
                 return true;
             }
         }
@@ -106,38 +62,31 @@ public class LibraryController {
             Book book = bookDao.findBookByID(bookID);
             if (book != null && bookDao.isOnLoadBook(book)) {
                 bookDao.setToAvailable(book);
-//                removeFromUserBookList(book);
                 return true;
             }
         }
         return false;
     }
     public boolean checkOutMovie(int movieID) {
-        if (movieID < 0 || movieID > libraryDao.getAllMovie().size())
-            return false;
-        Movie movie = movieDao.findMovieByID(movieID);
-        if (movie != null && isMovieStatus(movie, STATUS_AVAILABLE)) {
-            movie.setStatus(STATUS_ON_LOAD);
-//            addToUserMovieList(movie);
-            return true;
+        if (movieDao.isValidMovieID(movieID)) {
+            Movie movie = movieDao.findMovieByID(movieID);
+            if (movie != null && movieDao.isAvailable(movie)) {
+                movieDao.setToOnLoad(movie);
+                return true;
+            }
         }
         return false;
     }
 
     public boolean checkInMovie(int movieID) {
-        if (movieID < 0 || movieID > libraryDao.getAllBooks().size())
-            return false;
-        Movie movie = movieDao.findMovieByID(movieID);
-        if (movie != null && isMovieStatus(movie, STATUS_ON_LOAD)) {
-            movie.setStatus(STATUS_AVAILABLE);
-//            removeFromUserMovieList(movie);
-            return true;
+        if (movieDao.isValidMovieID(movieID)) {
+            Movie movie = movieDao.findMovieByID(movieID);
+            if (movie != null && movieDao.isOnLoadMovie(movie)) {
+                movieDao.setToAvailable(movie);
+                return true;
+            }
         }
         return false;
     }
 
-
-    private boolean isMovieStatus(Movie movie, String status) {
-        return movie.getStatus().equals(status);
-    }
 }

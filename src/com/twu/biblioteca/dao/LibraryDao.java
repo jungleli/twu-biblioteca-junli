@@ -30,7 +30,7 @@ public class LibraryDao {
         return getLibbrary().getBooks();
     }
 
-    public List<Movie> getAllMovie() {
+    public List<Movie> getAllMovies() {
         return getLibbrary().getMovies();
     }
 
@@ -39,7 +39,7 @@ public class LibraryDao {
     }
 
     public List<Movie> getAllAvailableMovies() {
-        return getAllMovie().stream().filter(m -> movieDao.isAvailable(m)).collect(Collectors.toList());
+        return getAllMovies().stream().filter(m -> movieDao.isAvailable(m)).collect(Collectors.toList());
     }
 
 }
