@@ -12,13 +12,13 @@ public class ListLibraryItemView {
 
     public void printBooklist() {
         Helper.printMsg(String.format("%-10s%-20s%-15s%-20s%-20s", "BOOK ID", "BOOK NAME", "AUTHOR", "PUBLISH DATE", "STATUS"));
-        libDispatcher.listAllAvailableBooks(libDispatcher.getAllBooks()).forEach(
+        libDispatcher.listAllAvailableBooks().forEach(
                 r -> Helper.printMsg(r));
     }
 
     public void printMovielist() {
         Helper.printMsg(String.format("%-10s%-20s%-15s%-20s%-20s", "MOVIE ID", "MOVIE NAME", "DIRECTOR", "PUBLISH YEAR", "REATING"));
-        libDispatcher.listAllAvailableMovies(libDispatcher.getAllMovie()).forEach(
+        libDispatcher.listAllAvailableMovies().forEach(
                 r -> Helper.printMsg(r));
     }
 }

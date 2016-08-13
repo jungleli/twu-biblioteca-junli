@@ -43,8 +43,8 @@ public class LibraryControllerTest {
 
     @Test
     public void ShouldBeAbleGetAllAvailabeLibraryBooks() {
-        Assert.assertTrue(libraryController.listAllAvailableBooks(bookList).stream().anyMatch(i->i.contains("Java Plus")));
-        Assert.assertFalse(libraryController.listAllAvailableBooks(bookList).stream().anyMatch(i->i.contains("C Plus")));
+        Assert.assertTrue(libraryController.listAllAvailableBooks().stream().anyMatch(i->i.contains("Java Plus")));
+        Assert.assertFalse(libraryController.listAllAvailableBooks().stream().anyMatch(i->i.contains("C Plus")));
     }
 
     @Test
