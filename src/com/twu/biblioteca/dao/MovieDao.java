@@ -21,7 +21,7 @@ public class MovieDao {
     }
 
     public boolean isValidMovieID(int id) {
-        return id < 0 && id > libraryDao.getAllMovies().size();
+        return id < libraryDao.getAllMovies().size() && id > 0;
     }
 
     public boolean isOnLoadMovie(Movie movie) {

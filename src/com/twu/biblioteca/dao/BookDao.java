@@ -21,7 +21,7 @@ public class BookDao {
     }
 
     public boolean isValidBookID(int id) {
-        return id < 0 && id > libraryDao.getAllBooks().size();
+        return id < libraryDao.getAllBooks().size() && id > 0;
     }
 
     public boolean isOnLoadBook(Book book) {
