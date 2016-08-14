@@ -1,5 +1,6 @@
 package com.twu.biblioteca.controller;
 
+import com.twu.biblioteca.dao.UserDao;
 import com.twu.biblioteca.helper.Helper;
 import com.twu.biblioteca.model.Book;
 import com.twu.biblioteca.model.Movie;
@@ -14,71 +15,36 @@ import java.util.stream.Collectors;
  * Created by jlli on 8/6/16.
  */
 public class UserController {
-    private static List<User> users;
-    public List<User> getAllUsers() {
-        if(users == null) {
-            users = Helper.intializeUsers();
-        }
-        return users;
+    private UserDao userDao = new UserDao();
+
+    public boolean hasLoginUser() {
+        return userDao.getLoginUser() != null;
     }
 
-    public boolean isLogin(String username){
-        return getAllUsers().stream().anyMatch(i -> i.getName().equals(username) && i.getStatus() == "LOGIN");
-    }
-
-    public User getLoginUser() {
-        return getAllUsers().stream().filter(u -> u.getStatus().equals("LOGIN")).findFirst().orElse(null);
-    }
-
-    public boolean findLoginUser() {
-        return getAllUsers().stream().anyMatch(u -> u.getStatus() == "LOGIN");
-    }
-
-    public List<Book> getUserBooks(){
-        if(findLoginUser()){
-            return getLoginUser().getBookList();
-        }else return new ArrayList<>();
-    }
-
-    public List<Movie> getUserMovies() {
-        if(findLoginUser()){
-            return getLoginUser().getMovieList();
-        }else return new ArrayList<>();
-    }
-
-    public void setUsersBooks(List<Book> bookList){
-        if(findLoginUser()) {
-            getLoginUser().setBookList(bookList);
-        }
-    }
-
-    public void setUsersMovies(List<Movie> movieList){
-        if(findLoginUser()) {
-            getLoginUser().setMovieList(movieList);
-        }
-    }
-
-    public User findUserByName(String username) {
-        return getAllUsers().stream().filter(u -> u.getName().equals(username)).findFirst().orElse(null);
+    public void showUserInfo() {
+        User u = userDao.getLoginUser();
+        Helper.printMsg(String.format("UserName:%-10s Email:%-20s PhoneNum:%-20s", u.getName(), u.getEmail(), u.getPhoneNum()));
     }
 
     public boolean Login(String username, String password) {
-        if (!findLoginUser()) {
-            boolean auth = getAllUsers().stream().anyMatch(i -> i.getName().equals(username) && i.getPassword().equals(password));
-            if (auth) {
-                findUserByName(username).setStatus("LOGIN");
+        User loginUser = userDao.findUserByName(username);
+        if (loginUser != null) {
+            if (userDao.isAuthUser(username, password)) {
+                userDao.setUserStatusToLogin(loginUser);
                 return true;
             }
         }
         return false;
     }
 
-    public boolean Logout(){
-        if(findLoginUser()){
-            getLoginUser().setStatus("LOGOUT");
+    public boolean Logout() {
+        if(userDao.getLoginUser() != null) {
+            userDao.setUserStatusToLogOut(userDao.getLoginUser());
             return true;
         }
         return false;
     }
+
+
 
 }

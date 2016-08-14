@@ -2,6 +2,7 @@ package com.twu.biblioteca.view;
 
 import com.twu.biblioteca.controller.LibraryController;
 import com.twu.biblioteca.controller.UserController;
+import com.twu.biblioteca.dao.UserDao;
 import com.twu.biblioteca.helper.Helper;
 
 /**
@@ -9,7 +10,7 @@ import com.twu.biblioteca.helper.Helper;
  */
 public class CheckLibraryItemView {
     LibraryController libraryController = new LibraryController();
-    boolean isHasUserLogin = new UserController().findLoginUser();
+    boolean isHasUserLogin = new UserController().hasLoginUser();
 
     public void checkOutBookByID() {
         if (isHasUserLogin) {
@@ -21,7 +22,7 @@ public class CheckLibraryItemView {
                 Helper.printMsg("That book is not available. Which do you want next:");
             }
         }else{
-            Helper.printMsg("You are not Login, Please Login first.");
+            Helper.printMsg("You are not isLogin, Please isLogin first.");
         }
     }
 
@@ -35,7 +36,7 @@ public class CheckLibraryItemView {
                 Helper.printMsg("That movie is not available. Which do you want next:");
             }
         }else{
-            Helper.printMsg("You are not Login, Please Login first.");
+            Helper.printMsg("You are not isLogin, Please isLogin first.");
         }
     }
 
@@ -47,7 +48,7 @@ public class CheckLibraryItemView {
                 Helper.printMsg("Thank you for returning the book.");
             } else Helper.printMsg("That is not a valid book to return.");
         } else {
-            Helper.printMsg("You are not Login, Please Login first.");
+            Helper.printMsg("You are not isLogin, Please isLogin first.");
         }
     }
 
@@ -59,7 +60,7 @@ public class CheckLibraryItemView {
                 Helper.printMsg("Thank you for returning the movie.");
             } else Helper.printMsg("That is not a valid movie to return.");
         } else {
-            Helper.printMsg("You are not Login, Please Login first.");
+            Helper.printMsg("You are not isLogin, Please isLogin first.");
         }
     }
 }

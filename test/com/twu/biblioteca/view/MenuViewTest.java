@@ -31,7 +31,7 @@ public class MenuViewTest {
 
     @Test
     public void ShouldBeShowMenuItems(){
-        menuItems = "1 : List Books || 2 : List Movies || 3 : Check out books || 4 : Check out movies || 5 : Check in books || 6 : Check in movis || 7 : Login || 8 : User Info || 9 : Logout || 0 : Quit\n";
+        menuItems = "1 : List Books || 2 : List Movies || 3 : Check out books || 4 : Check out movies || 5 : Check in books || 6 : Check in movis || 7 : isLogin || 8 : User Info || 9 : Logout || 0 : Quit\n";
         MenuView menuView = new MenuView();
         menuView.printAllMenu();
         Assert.assertEquals(menuItems.trim(), outContent.toString().trim());

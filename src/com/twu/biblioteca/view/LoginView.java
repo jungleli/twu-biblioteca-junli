@@ -26,8 +26,8 @@ public class LoginView {
         if (user.Login(username, password)) {
             Helper.printMsg("Login success, Now you can borrow book!");
         } else {
-            if (user.findLoginUser())
-                Helper.printMsg("You are alreadly Login!");
+            if (user.hasLoginUser())
+                Helper.printMsg("You are alreadly isLogin!");
             else
                 Helper.printMsg("Wrong username or password, please enter again");
         }
@@ -37,39 +37,16 @@ public class LoginView {
         if (user.Logout()) {
             Helper.printMsg("Logout success. Thanks for using.");
         } else {
-            Helper.printMsg("No User is Login. Please enter your option.");
+            Helper.printMsg("No User is isLogin. Please enter your option.");
         }
     }
 
     public void showUserInfo() {
-        if (user.findLoginUser()) {
-            User u = user.getLoginUser();
-            Helper.printMsg(String.format("UserName:%-10s Email:%-20s PhoneNum:%-20s", u.getName(), u.getEmail(), u.getPhoneNum()));
+        if (user.hasLoginUser()) {
+            user.showUserInfo();
         } else {
-            Helper.printMsg("No User is Login. Please enter your option.");
+            Helper.printMsg("No User is isLogin. Please enter your option.");
         }
     }
 
-    public void showUserCheckedBooksAndMovies() {
-        if (user.findLoginUser()) {
-            List<Book> userBookList = user.getUserBooks();
-            List<Movie> userMovieList = user.getUserMovies();
-            if (userBookList != null && userBookList.size() > 0) {
-                Helper.printMsg(String.format("%-10s%-20s%-15s%-20s%-%20s", "BOOK ID", "BOOK NAME", "AUTHOR", "PUBLISH DATE", "STATUS"));
-                formatBookList(userBookList).forEach(
-                        r -> Helper.printMsg(r));
-               } else {
-                Helper.printMsg("You have not borrow any books.");
-            }
-            if (userMovieList != null && userMovieList.size() > 0) {
-                Helper.printMsg(String.format("%-10s%-20s%-15s%-20s%-%20s", "Movie ID", "MOVIE NAME", "DIRECTOR", "PUBLISH DATE", "RATING"));
-                formatMovieList(userMovieList).forEach(
-                        r -> Helper.printMsg(r));
-            } else {
-                Helper.printMsg("You have not borrow any books.");
-            }
-        } else {
-            Helper.printMsg("No User is Login. Please enter your option.");
-        }
-    }
 }

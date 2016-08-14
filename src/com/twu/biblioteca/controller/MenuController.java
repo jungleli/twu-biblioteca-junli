@@ -1,5 +1,6 @@
 package com.twu.biblioteca.controller;
 
+import com.twu.biblioteca.dao.MenuDao;
 import com.twu.biblioteca.helper.Helper;
 import com.twu.biblioteca.model.Menu;
 
@@ -11,17 +12,10 @@ import java.util.stream.Collectors;
  * Created by jlli on 8/6/16.
  */
 public class MenuController {
-    private List<Menu> menus;
-    public List<Menu> getAllMenu()
-    {
-       if(menus == null){
-           menus = Helper.intializeMenus();
-       }
-        return menus;
-    }
+    private MenuDao menuDao = new MenuDao();
 
     public List<String> listAllMenu(){
-        return getAllMenu().stream().map(m -> String.format("%-2d: %-5s", m.getID(), m.getName())).collect(Collectors.toList());
+        return menuDao.getAllMenu().stream().map(m -> String.format("%-2d: %-5s", m.getID(), m.getName())).collect(Collectors.toList());
     }
 
     public String showMenu() {

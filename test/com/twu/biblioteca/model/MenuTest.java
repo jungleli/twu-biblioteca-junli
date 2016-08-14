@@ -13,12 +13,12 @@ public class MenuTest {
 
     @Before
     public void BuildMenu() {
-        menu = new Menu(0, "Login");
+        menu = new Menu(0, "isLogin");
     }
 
     @Test
     public void ShouldReturnMenuByGiveMenu() {
         assertEquals(0, menu.getID());
-        assertEquals("Login", menu.getName());
+        assertEquals("isLogin", menu.getName());
     }
 }

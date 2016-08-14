@@ -22,17 +22,6 @@ public class UserontrollerTest {
         userController.Logout();
     }
 
-
-    @Test
-    public void ShouldBeAbleToFindLoginUser() {
-        Assert.assertTrue(userController.findUserByName("Lisa").getStatus() == "LOGIN");
-    }
-
-    @Test
-    public void ShouldBeAbleTofindLoginUser() {
-        Assert.assertTrue(userController.findLoginUser());
-    }
-
     @Test
     public void ShouldBeAbleToLogOut() {
         Assert.assertTrue(userController.Logout());

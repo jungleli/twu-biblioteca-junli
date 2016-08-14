@@ -28,7 +28,7 @@ public class LoginViewTest {
 
     @Test
     public void ShouldBeShowLogMsgDependsOnLoginStatus() {
-        logOutMsg = "No User is Login. Please enter your option.\n";
+        logOutMsg = "No User is isLogin. Please enter your option.\n";
         LoginView loginView = new LoginView();
         loginView.logout();
         Assert.assertEquals(logOutMsg.trim(), outContent.toString().trim());

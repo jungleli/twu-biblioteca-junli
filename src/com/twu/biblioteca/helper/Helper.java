@@ -62,7 +62,7 @@ public class Helper {
                 new Menu(4, "Check out movies"),
                 new Menu(5, "Check in books"),
                 new Menu(6, "Check in movis"),
-                new Menu(7, "Login"),
+                new Menu(7, "isLogin"),
                 new Menu(8, "User Info"),
                 new Menu(9, "Logout"),
                 new Menu(0, "Quit")
